@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycle_view);
+        recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewAdapter = new PostsAdapter(this);
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         NbuInterface nbuInterface = retrofit.create(NbuInterface.class);
 
-        nbuInterface.getNbuData()
+        nbuInterface.getNbuData("eur",20181112, "json")
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResults, this::handleError);

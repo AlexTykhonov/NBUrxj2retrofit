@@ -14,7 +14,6 @@ import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>
 {
-
     private List<PojoNbu> posts;
     Context context;
     public PostsAdapter(Context context) {
@@ -53,19 +52,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView post;
         TextView site;
-        ImageView imageview;
 
         public ViewHolder(View itemView) {
             super(itemView);
             post = (TextView) itemView.findViewById(R.id.postitem_post);
             site = (TextView) itemView.findViewById(R.id.postitem_site);
-            imageview = (ImageView) itemView.findViewById(R.id.image_p);
 
         }
     }
 
     public void setData(NbuInterface nbuInterface) {
-        this.posts.addAll((Collection<? extends PojoNbu>) nbuInterface.getNbuData());
+        this.posts.addAll((Collection<? extends PojoNbu>) nbuInterface.getNbuData("eur",20181112, "json"));
         notifyDataSetChanged();
     }
 
